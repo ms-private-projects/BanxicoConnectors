@@ -1,4 +1,4 @@
-# src/instruments/boostrap.py
+# banxico_connectors/instruments/boostrap.py
 from __future__ import annotations
 
 from mainsequence.client import Constant as _C

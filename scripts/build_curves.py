@@ -4,7 +4,7 @@ from __future__ import annotations
 from mainsequence.client import Constant as _C
 
 # 1) Seed Banxico-owned constants FIRST (before any module that might call _C.get_value at import time)
-from src.instruments.scafold import seed_defaults
+from banxico_connectors.instruments.scafold import seed_defaults
 seed_defaults()
 
 # 2) Import registries explicitly (this is what you said was missing)
@@ -15,7 +15,7 @@ from mainsequence.instruments.interest_rates.etl.registry import (
 
 # 3) Ensure builders are registered (NO side-effects at import time)
 #    This also wires the new pricing_models.indices IndexSpec registry.
-from src.instruments.registry import register_all
+from banxico_connectors.instruments.registry import register_all
 
 register_all()
 
@@ -28,8 +28,8 @@ from mainsequence.instruments.interest_rates.etl.nodes import (
     RateConfig,
 )
 
-from src.data_nodes.nodes import BanxicoMXNOTR
-from src.settings import ON_THE_RUN_DATA_NODE_TABLE_NAME
+from banxico_connectors.data_nodes.nodes import BanxicoMXNOTR
+from banxico_connectors.settings import ON_THE_RUN_DATA_NODE_TABLE_NAME
 
 
 _REQUIRED_CURVE_CONSTS = (
@@ -60,7 +60,7 @@ def _assert_registry_wired() -> None:
 
     if missing:
         raise RuntimeError(
-            "Builder registry is NOT wired (src.instruments.registry didn't register what this runner needs):\n"
+            "Builder registry is NOT wired (banxico_connectors.instruments.registry didn't register what this runner needs):\n"
             + "\n".join(f" - {m}" for m in missing)
         )
 

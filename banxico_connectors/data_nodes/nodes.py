@@ -13,7 +13,7 @@ import mainsequence.client as msc
 from mainsequence.tdag import DataNode
 from mainsequence.client.models_tdag import UpdateStatistics, ColumnMetaData
 
-from src.settings import (
+from banxico_connectors.settings import (
     CETES_SERIES,
     BONOS_SERIES,
     BONDES_D_SERIES,
@@ -23,7 +23,7 @@ from src.settings import (
     MONEY_MARKET_RATES,
     ON_THE_RUN_DATA_NODE_TABLE_NAME,
 )
-from src.utils import fetch_banxico_series_batched, to_long
+from banxico_connectors.utils import fetch_banxico_series_batched, to_long
 
 UTC = pytz.utc
 
